@@ -4,7 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],  theme: {
-    extend: {},
+    extend: {
+      width: {
+        "dashboard": "1020px"
+      },
+      maxWidth: {
+        "dashboard": "1020px"
+      }
+    },
   },
   plugins: [],
 }
