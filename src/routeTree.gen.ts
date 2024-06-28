@@ -16,14 +16,28 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const SettingsLazyImport = createFileRoute('/settings')()
 const IndexLazyImport = createFileRoute('/')()
+const SettingsActivityLazyImport = createFileRoute('/settings/activity')()
 
 // Create/Update Routes
+
+const SettingsLazyRoute = SettingsLazyImport.update({
+  path: '/settings',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/settings.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const SettingsActivityLazyRoute = SettingsActivityLazyImport.update({
+  path: '/activity',
+  getParentRoute: () => SettingsLazyRoute,
+} as any).lazy(() =>
+  import('./routes/settings/activity.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -36,12 +50,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/settings/activity': {
+      id: '/settings/activity'
+      path: '/activity'
+      fullPath: '/settings/activity'
+      preLoaderRoute: typeof SettingsActivityLazyImport
+      parentRoute: typeof SettingsLazyImport
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexLazyRoute,
+  SettingsLazyRoute: SettingsLazyRoute.addChildren({
+    SettingsActivityLazyRoute,
+  }),
+})
 
 /* prettier-ignore-end */
 
@@ -51,11 +84,22 @@ export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/settings"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/settings": {
+      "filePath": "settings.lazy.tsx",
+      "children": [
+        "/settings/activity"
+      ]
+    },
+    "/settings/activity": {
+      "filePath": "settings/activity.lazy.tsx",
+      "parent": "/settings"
     }
   }
 }

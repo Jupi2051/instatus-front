@@ -9,7 +9,7 @@ export default function Header()
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-3 text-gray-500 transition ease-in-out fill-current" viewBox="0 0 512 512">
                   <path d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z"></path>
                 </svg>
-                <input className="flex-grow w-full text-xl text-white transition ease-in-out bg-transparent search-input focus:outline-none" placeholder="Quick search..." value="" />
+                <input className="flex-grow w-full text-xl text-white transition ease-in-out bg-transparent search-input focus:outline-none" placeholder="Quick search..." />
               </div>
               <button type="button" className="cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="text-gray-500 fill-current w-7 h-7 hover:text-gray-200">
@@ -31,7 +31,7 @@ export default function Header()
                   <div className="flex items-center w-6 h-6 rounded-full aspect-square overflow-hidden">
                     <img src="https://cdn.discordapp.com/attachments/1034873798438174731/1255479043927572571/avatar.png?ex=667d4779&is=667bf5f9&hm=8a6337fcf4e59857fe8956c632edfa31a21285c2edd06a7500ed05683d4dd5df&" />
                   </div>
-                  <h1>Some Name</h1>
+                  <h1>I Love Instatus</h1>
                 </div>
               </div>
               <div className="relative z-10 flex flex-row items-center justify-end w-1/2 text-sm">
