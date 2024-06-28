@@ -59,8 +59,9 @@ export function ActivityContent()
             setLiveEnabled(false);
             return () => {}
         }
-
-        setNewData((prev) => [data, ...prev])
+        const dataObject = JSON.parse(data) as API_Event;
+        
+        setNewData((prev) => [dataObject, ...prev])
         return () => {}
     }, [data, error]);
 
@@ -69,7 +70,7 @@ export function ActivityContent()
             <ActivitySearch events={events} setSearchValue={setSearchValue} onTriggerLive={onTriggerLiveEvents} isLiveOn={isLiveEnabled}/>
         </div>
         <div className="relative bottom-[50px] border border-t-transparent border-gray-100 rounded-b-xl">
-            <ActivityList events={events} newData={newData} />
+            <ActivityList events={events} newData={searchValue === ""? newData : []} />
         </div>
     </div>
 }

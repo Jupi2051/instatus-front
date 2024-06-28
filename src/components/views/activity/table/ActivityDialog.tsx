@@ -131,7 +131,7 @@ export const ActivityDialog = forwardRef<HTMLDivElement, ActivityDialogProps>(
                                         <span className="text-[#929292]">Email</span> <span className="text-[#1C1C1C]">{event.data.target.email}</span>
                                     </div>
                                     <div className="grid grid-cols-[50px_1fr] gap-x-4">
-                                        <span className="text-[#929292]">ID</span> <span className="text-[#1C1C1C]">{event.data.target_id.slice(0, 25)}</span>
+                                        <span className="text-[#929292]">ID</span> <span className="text-[#1C1C1C]">{event.data.target_id?.slice(0, 25)?? "N/A"}</span>
                                     </div>
                                 </div>
                                 :

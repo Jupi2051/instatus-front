@@ -3,7 +3,7 @@ export type API_Event = {
     object: OBJECT_TYPES,
     actor_id: string,
     group: string,
-    target_id: string,
+    target_id: string | null,
     location: string,
     occurred_at: Date,
     metadata: null,
@@ -22,7 +22,7 @@ export type API_Event = {
         id: string,
         name: string,
         email: string
-    }
+    } | null
 }
 
 export interface API_EventResponse {

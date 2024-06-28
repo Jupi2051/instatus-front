@@ -32,8 +32,8 @@ export default function ActivitySearch(props: ActivityListProps)
                 return {
                     Actor: ev.Actor.name,
                     Actor_Email: ev.Actor.email,
-                    Target: ev.target.name?? "N/A",
-                    Target_Email: ev.target.email?? "N/A",
+                    Target: ev.target?.name?? "N/A",
+                    Target_Email: ev.target?.email?? "N/A",
                     Date: ev.occurred_at
                 }
             })

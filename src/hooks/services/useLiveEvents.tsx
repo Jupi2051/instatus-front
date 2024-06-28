@@ -1,14 +1,15 @@
 import useSWRSubscription from "swr/subscription";
-import { API_Event } from "../../API/types/events/events";
 
 type liveEventsProps = {
     enabled: boolean,
     onConnectionClose: () => void
 }
 
+const websocketURL = import.meta.env.VITE_WS_URL;
+
 export default function useLiveEvents(props: liveEventsProps)
 {
-    return useSWRSubscription<API_Event>(props.enabled? "ws://localhost:8080/" : undefined, (key: string | undefined, {next}: {next: (error: any, data?: any) => any}) => {
+    return useSWRSubscription<string>(props.enabled? websocketURL : undefined, (key: string | undefined, {next}: {next: (error: any, data?: any) => any}) => {
         const socket = new WebSocket(key?? "");
         socket.addEventListener('message', (event) => {
             console.log(event.data);
