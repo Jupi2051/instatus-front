@@ -25,9 +25,12 @@ export default function ActivityTable(props: ActivityTableProps)
     table: table,
     customLoadingColumns: [{
       columnIndex: 0,
-      node: <div className="flex items-center gap-2">
-        <Skeleton className="w-6 h-6 bg-gray-200 rounded-full animate-pulse"/>
-        <Skeleton className="h-3.5 w-full max-w-32 bg-gray-200 rounded-full animate-pulse"/>
+      node: 
+      <div className="mr-7">
+        <div className="flex items-center gap-2">
+          <Skeleton className="w-6 h-6 bg-gray-200 rounded-full animate-pulse"/>
+          <Skeleton className="h-3.5 w-full max-w-32 bg-gray-200 rounded-full animate-pulse"/>
+        </div>
       </div>
     },
     {
