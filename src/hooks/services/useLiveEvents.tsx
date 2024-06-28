@@ -27,5 +27,7 @@ export default function useLiveEvents(props: liveEventsProps)
         })
 
         return () => socket.close();
+    }, {
+        
     });
 }
