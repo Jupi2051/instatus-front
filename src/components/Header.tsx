@@ -29,7 +29,7 @@ export default function Header()
                 </span>
                 <div className="items-center transition ease-in-out lg:flex text-white gap-3">
                   <div className="flex items-center w-6 h-6 rounded-full aspect-square overflow-hidden">
-                    <img src="https://cdn.discordapp.com/attachments/1034873798438174731/1255479043927572571/avatar.png?ex=667d4779&is=667bf5f9&hm=8a6337fcf4e59857fe8956c632edfa31a21285c2edd06a7500ed05683d4dd5df&" />
+                    <img src="https://cdn.discordapp.com/attachments/1034873798438174731/1256325098755981455/avatar.png?ex=66805b6c&is=667f09ec&hm=cfb9f7fb13d87eab1e8b93118dc68461d4c1ef4fe26dcb34ea179d521de1b632&" />
                   </div>
                   <h1>I Love Instatus</h1>
                 </div>
