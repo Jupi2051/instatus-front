@@ -2,10 +2,13 @@ import { HTMLAttributes, useEffect, useState } from "react";
 import { SWRInfiniteResponse } from "swr/infinite";
 import { API_Event } from "../../../API/types/events/events";
 import { download, generateCsv, mkConfig } from "export-to-csv";
+import { cn } from "../../../utils/cn";
 
 type ActivityListProps = {
     events: SWRInfiniteResponse<API_Event[], any>;
     setSearchValue: (v: string) => void
+    onTriggerLive: () => void;
+    isLiveOn: boolean
 };
 
 export default function ActivitySearch(props: ActivityListProps)
@@ -55,12 +58,12 @@ export default function ActivitySearch(props: ActivityListProps)
                         Export
                     </button>
                     <SearchBarSeparator />
-                    <div>
-                        <div className="flex gap-1 items-center text-[#575757]">
-                            <span className="w-3.5 h-3.5 rounded-full animate-pulse bg-red-900"></span>
+                    <button className="h-full" onClick={props.onTriggerLive}>
+                        <div className="flex gap-1 items-center text-[#575757] h-full">
+                            <span className={cn("w-3.5 h-3.5 rounded-full bg-red-900", props.isLiveOn? "" : "opacity-50")}></span>
                             Live
                         </div>
-                    </div>
+                    </button>
                     <span></span>
                 </div>
             </div>
